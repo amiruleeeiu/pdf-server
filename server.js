@@ -11,7 +11,11 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.text({ type: 'text/html' })); // Middleware to parse HTML content
 
-app.post('/generate-pdf', async (req, res) => {
+app.get('/',(req,res)=>{
+  res.send('Successfully running.')
+})
+
+app.post('/v1/html-to-pdf', async (req, res) => {
   try {
     const htmlContent = req.body; // Get HTML content from request body
     const outputPath = path.join(__dirname, 'result.pdf');
